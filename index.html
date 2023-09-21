@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Name Generator</title>
+  </head>
+  <body>
+    <h1>Random Name Generator</h1>
+    <p>Generated Name: <span id="randomName"></span></p>
+    <button id="generateButton">Generate Name</button>
+
+    <script>
+      const generateButton = document.getElementById("generateButton");
+      const randomNameElement = document.getElementById("randomName");
+
+      generateButton.addEventListener("click", () => {
+        fetch("/generate")
+          .then(response => response.text())
+          .then(data => {
+            randomNameElement.textContent = data;
+          });
+      });
+    </script>
+  </body>
+</html>
